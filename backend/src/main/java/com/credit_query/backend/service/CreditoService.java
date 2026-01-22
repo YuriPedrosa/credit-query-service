@@ -2,10 +2,10 @@ package com.credit_query.backend.service;
 
 import com.credit_query.backend.dto.CreditoDTO;
 import com.credit_query.backend.entity.Credito;
+import com.credit_query.backend.exception.ResourceNotFoundException;
 import com.credit_query.backend.producer.AuditProducer;
 import com.credit_query.backend.repository.CreditoRepository;
 import lombok.RequiredArgsConstructor;
-import org.apache.kafka.common.errors.ResourceNotFoundException;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
