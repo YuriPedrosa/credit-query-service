@@ -1,0 +1,50 @@
+<section class="consulta-creditos">
+    <div class="page-header">
+        <h1>Consulta de Créditos</h1>
+        <p>Pesquise créditos por NFS-e ou número do crédito</p>
+    </div>
+
+
+    <credito-filtro (buscar)="buscarCreditos($event)" />
+
+    <ng-container *ngIf="creditos$ | async as creditos">
+        <table *ngIf="creditos.length; else vazio">
+            <thead>
+                <tr>
+                    <th>Crédito</th>
+                    <th>NFS-e</th>
+                    <th>Constituição</th>
+                    <th>Tipo</th>
+                    <th>Simples</th>
+                    <th>Alíquota (%)</th>
+                    <th>Faturado</th>
+                    <th>Dedução</th>
+                    <th>Base Cálculo</th>
+                    <th>ISSQN</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <tr *ngFor="let c of creditos">
+                    <td>{{ c.numeroCredito }}</td>
+                    <td>{{ c.numeroNfse }}</td>
+                    <td>{{ c.dataConstituicao | date:'dd/MM/yyyy' }}</td>
+                    <td>{{ c.tipoCredito }}</td>
+                    <td class="simples" [class.sim]="c.simplesNacional === 'Sim'"
+                        [class.nao]="c.simplesNacional === 'Não'">
+                        {{ c.simplesNacional }}
+                    </td>
+                    <td>{{ c.aliquota }}</td>
+                    <td>{{ c.valorFaturado | currency:'BRL' }}</td>
+                    <td>{{ c.valorDeducao | currency:'BRL' }}</td>
+                    <td>{{ c.baseCalculo | currency:'BRL' }}</td>
+                    <td><strong>{{ c.valorIssqn | currency:'BRL' }}</strong></td>
+                </tr>
+            </tbody>
+        </table>
+    </ng-container>
+
+    <ng-template #vazio>
+        <p class="empty">Nenhum crédito encontrado.</p>
+    </ng-template>
+</section>
