@@ -4,16 +4,14 @@ import com.credit_query.backend.dto.CreditoDTO;
 import com.credit_query.backend.service.CreditoService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
 @RequestMapping("/api/creditos")
 @RequiredArgsConstructor
+@CrossOrigin(origins = "http://localhost:4200")
 public class CreditoController {
 
     private final CreditoService service;
