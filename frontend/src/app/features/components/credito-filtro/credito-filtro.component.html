@@ -1,0 +1,21 @@
+<form class="filtro" (ngSubmit)="onBuscar()">
+
+    <div class="tipo">
+        <label>
+            <input type="radio" name="tipo" value="NFSE" [(ngModel)]="tipo" />
+            NFS-e
+        </label>
+
+        <label>
+            <input type="radio" name="tipo" value="CREDITO" [(ngModel)]="tipo" />
+            Crédito
+        </label>
+    </div>
+
+    <input type="text" [placeholder]="tipo === 'NFSE' ? 'Número da NFS-e' : 'Número do Crédito'" [(ngModel)]="valor"
+        name="valor" />
+
+    <button type="submit">
+        Buscar
+    </button>
+</form>
