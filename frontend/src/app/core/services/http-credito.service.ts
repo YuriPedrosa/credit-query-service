@@ -5,7 +5,7 @@ import { map, Observable } from 'rxjs';
 
 @Injectable({ providedIn: 'root' })
 export class HttpCreditosService {
-    private readonly API = 'http://localhost:8080/api/creditos';
+    private readonly API = 'http://localhost:8080/api/creditos'; // mantido assim apenas para fins de exemplo
 
     constructor(private http: HttpClient) { }
 
