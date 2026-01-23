@@ -1,11 +1,12 @@
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Credito } from '../models/credito.model';
 import { map, Observable } from 'rxjs';
+import { APP_API_TOKEN } from '../config/app-api.token';
 
 @Injectable({ providedIn: 'root' })
 export class HttpCreditosService {
-    private readonly API = 'http://localhost:8080/api/creditos'; // mantido assim apenas para fins de exemplo
+    private readonly API = inject(APP_API_TOKEN).API;
 
     constructor(private http: HttpClient) { }
 
