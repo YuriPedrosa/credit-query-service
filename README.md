@@ -46,6 +46,12 @@ Este sistema permite a consulta de créditos de ISSQN de forma eficiente. Ele fo
 │                        │    Kafka     │                             │
 │                        │  (Auditoria) │                             │
 │                        └──────────────┘                             │
+│                                 │                                   │
+│                                 │                                   │
+│                        ┌──────────────┐                             │
+│                        │  Kafka UI    │                             │
+│                        │  (Gerencia)  │                             │
+│                        └──────────────┘                             │
 │                                                                      │
 └─────────────────────────────────────────────────────────────────────┘
 ```
@@ -72,6 +78,7 @@ Este sistema permite a consulta de créditos de ISSQN de forma eficiente. Ele fo
 - **Docker** - Containerização
 - **Docker Compose** - Orquestração de containers
 - **Testcontainers** - Containers para testes
+- **Kafka UI** - Interface web para gerenciamento do Kafka
 
 ## 📁 Estrutura do Projeto
 
@@ -171,11 +178,13 @@ docker-compose -f docker/docker-compose.full.yml down
 | Backend | 8080 | API REST |
 | PostgreSQL | 5432 | Banco de dados |
 | Kafka | 9092 | Mensageria |
+| Kafka UI | 8081 | Interface web para Kafka |
 
 #### URLs de Acesso
 
 - **Aplicação Web**: http://localhost
 - **API Backend**: http://localhost/api/creditos
+- **Kafka UI**: http://localhost:8081
 
 ### 💻 Executando Localmente
 
@@ -330,6 +339,27 @@ O sistema envia eventos de auditoria para o Kafka topic `credit-query-audit` com
 - `SUCESSO` - Operação concluída com sucesso
 - `NAO_ENCONTRADO` - Recurso não encontrado
 - `ERRO` - Erro durante execução
+
+## 🖥️ Kafka UI
+
+O sistema inclui o **Kafka UI** (provectuslabs/kafka-ui) para gerenciamento e monitoramento visual do cluster Kafka.
+
+### Funcionalidades
+- Visualização de tópicos Kafka
+- Monitoramento de mensagens em tempo real
+- Visualização de consumidores e grupos de consumidores
+- Métricas do cluster Kafka
+- Busca de mensagens por intervalo de tempo/partition
+
+### URL de Acesso
+```
+http://localhost:8081
+```
+
+### Tópicos Disponíveis
+| Tópico | Descrição |
+|--------|-----------|
+| credit-query-audit | Eventos de auditoria das operações |
 
 ## 📝 Configurações
 
